@@ -20,13 +20,13 @@ const Post = () => {
                 {comments.map(({ comment, id }) => (
                     <li className={styles['post-comment']} key={id}>
                         <p className={styles['post-comment-content']}>
-                            <span data-testid="comment-item">{comment}</span>
+                            {comment}
                         </p>
                     </li>
                 ))}
             </ul>
             <form onSubmit={handleAddComment} className={styles['post-comments-form']}>
-                <textarea data-testid="comment-input" value={tempComment} onChange={e => setTempComment(e.target.value)} required className={styles['post-comments-form-textarea']} />
+                <textarea value={tempComment} onChange={e => setTempComment(e.target.value)} required className={styles['post-comments-form-textarea']} />
                 <button type="submit" className={styles['post-comments-form-button']}>
                     Comentar
                 </button>

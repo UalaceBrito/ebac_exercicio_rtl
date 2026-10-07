@@ -5,7 +5,7 @@ describe('PostComments', () => {
     it('adiciona dois comentários à lista', () => {
         render(<PostComments />);
 
-        const input = screen.getByTestId('comment-input');
+        const input = screen.getByRole('textbox');
         const submitButton = screen.getByRole('button', { name: 'Comentar' });
 
         fireEvent.change(input, { target: { value: 'Primeiro comentário' } });
@@ -14,7 +14,7 @@ describe('PostComments', () => {
         fireEvent.change(input, { target: { value: 'Segundo comentário' } });
         fireEvent.click(submitButton);
 
-        const comments = within(screen.getByTestId('comments-list')).getAllByTestId('comment-item');
+        const comments = within(screen.getByTestId('comments-list')).getAllByRole('listitem');
         expect(comments).toHaveLength(2);
         expect(comments[0]).toHaveTextContent('Primeiro comentário');
         expect(comments[1]).toHaveTextContent('Segundo comentário');
